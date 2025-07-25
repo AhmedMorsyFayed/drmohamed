@@ -1,0 +1,48 @@
+mkdir -p Adab_2025
+
+# 3. نسخ كل ملفات .mp3 من جهازك إلى مجلد المشروع
+cp /f/app/Adab_2025/*.mp3 Adab_2025/  
+
+# 4. إضافة الملفات إلى Git
+git add .
+
+# 5. إنشاء commit للتعديلات
+git commit -m "Add Adab_2025 mp3 files"
+
+# 6. جلب آخر التحديثات من GitHub (لتفادي تعارض)
+git pull origin main --rebase
+
+# 7. رفع الملفات إلى GitHub
+git push origin main
+///////////////////////////تحديث ملفات من المداخل المشروع الى العام
+git add Adab_2025/
+git add -A
+git commit -m "Update Adab_2025 folder with renamed and new audio files"
+git push origin main
+
+/////////////////////////////////////////////////////////////////////////
+# 1. رفع البافر إلى 500 ميجا
+git config --global http.postBuffer 524288000
+
+# 2. تقليل الضغط والتحميل لتفادي مشاكل الانقطاع
+git config --global core.compression 0
+git config --global pack.windowMemory 100m
+git config --global pack.packSizeLimit 100m
+git config --global pack.threads 1
+
+# 3. تفعيل Git LFS (لو المشروع يستخدمه)
+git lfs install
+
+# 4. تحميل المشروع بعمق 1 لتقليل الحجم عند البداية
+git clone --depth 1 https://github.com/AhmedMorsyFayed/drmohamed.git
+
+# 5. الدخول إلى المجلد
+cd REPO_NAME
+
+# 6. تحميل ملفات LFS (إن وُجدت)
+git lfs pull
+
+# 7. (اختياري) جلب كل تاريخ الكوميت بعد التحميل لو احتجته لاحقًا
+git fetch --unshallow
+
+
